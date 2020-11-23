@@ -18,10 +18,10 @@ namespace WcfService
 
         public DataTable GetData(string dateFrom, string dateTo)
         {
-            string query = @"SELECT dbo.register.id, dbo.register.date, dbo.clients.name AS client_name, dbo.services.name AS service_name
+            string query = @"SELECT dbo.register.id, dbo.register.date, dbo.clients.name AS client_name, dbo.services.name AS service_name, dbo.services.price
                                FROM dbo.register
-                         INNER JOIN dbo.clients  ON dbo.register.client_id = dbo.clients.id 
-                         INNER JOIN dbo.services ON dbo.trips.service_id   = dbo.services.id ";
+                         INNER JOIN dbo.clients  ON dbo.register.client_id  = dbo.clients.id 
+                         INNER JOIN dbo.services ON dbo.register.service_id = dbo.services.id ";
             if (!string.IsNullOrEmpty(dateFrom) && !string.IsNullOrEmpty(dateTo))
             {
                 query += $"WHERE dbo.register.date >= '{dateFrom}' AND dbo.register.date <= '{dateTo}'";
