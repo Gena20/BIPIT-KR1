@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -14,7 +15,11 @@ namespace WcfService
     {
 
         [OperationContract]
-        string GetData(int value);
+        DataTable GetData(string dateFrom, string dateTo);
+
+        [OperationContract]
+        string GetString(string data);
+
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
